@@ -38,8 +38,7 @@
 </div>
 <br>
 <div>
-<div style="float: left;" id="p_x"></div><br>
-<div style="float: left;" id="p_o"></div>
+<div style="float: left;" id="msg">Player X turn</div>
 </div>
 <br>
 <div>
@@ -51,11 +50,9 @@
     // console.log(element.id[3]-1);
     // console.log(CURRENT_PLAYER);
     if(CURRENT_PLAYER=="X"){
-      document.getElementById("p_o").innerHTML = "";
-      document.getElementById("p_x").innerHTML = "Player O turn";
+      document.getElementById('msg').innerHTML = "Player O turn";
     } else {
-      document.getElementById("p_x").innerHTML = "";
-      document.getElementById("p_o").innerHTML = "Player X turn";
+      document.getElementById("msg").innerHTML = "Player X turn";
     }
     // document.getElementById(element.id).style.color = "blue";
     // document.getElementById(element.id).style.fontFamily = "Arial";

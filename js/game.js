@@ -54,6 +54,7 @@ function reset_game() {
 		// console.log(id);
 		document.getElementById(id).innerHTML = "";
 	}
+	document.getElementById("msg").innerHTML = "Player X turn";
 	BOARD = [BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK];
 }
 
