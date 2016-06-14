@@ -14,11 +14,14 @@ var map_box_block = {
 }
 
 // Scores of players
-var player_x = 0;
-var player_o = 0;
+var SCORES = {
+	X: 0,
+	O: 0
+}
 
 // Current status of game
 var NO_OF_TURNS = 0;
+var CURRRENT_PLAYER = 'X';
 
 // var row0 = [];
 // var row1 = [];
@@ -51,9 +54,29 @@ function reset_game() {
 		diag2: []
 	};
 	NO_OF_TURNS = 0;
+	CURRRENT_PLAYER = 'X';
+
 }
 
-function update_status(player, box) {
+function next_turn() {
+	console.log('In next_turn()');
+	NO_OF_TURNS += 1;
+	if (CURRRENT_PLAYER == 'X'){
+		CURRRENT_PLAYER = 'O';
+		console.log(CURRRENT_PLAYER);
+	}
+	else if (CURRRENT_PLAYER == 'O'){
+		CURRRENT_PLAYER = 'X';
+		console.log(CURRRENT_PLAYER);
+	}
+}
+
+function win_game() {
+	alert("Player " + CURRRENT_PLAYER + " won!");
+	SCORES[CURRRENT_PLAYER] += 1;
+}
+
+function update_status(box) {
 	// Array of blocks (string) in which
 	// a particular box is present
 	var blocks = map_box_block[box];
@@ -66,15 +89,16 @@ function update_status(player, box) {
 		console.log(block);
 		console.log(game_status);
 		console.log(game_status[block]);
-		if(game_status[block].indexOf(player) == -1 && game_status[block].length == 0) {
-			game_status[block].push(player);
+		if(game_status[block].indexOf(CURRRENT_PLAYER) == -1 && game_status[block].length == 0) {
+			game_status[block].push(CURRRENT_PLAYER);
 		}
-		else if(game_status[block].indexOf(player) != -1) {
-			game_status[block].push(player);
+		else if(game_status[block].indexOf(CURRRENT_PLAYER) != -1) {
+			game_status[block].push(CURRRENT_PLAYER);
 		}
 		if (game_status[block].length == 3) {
-			alert("Player " + player + " won!");
+			win_game();
 			reset_game();
 		}
 	}
+	next_turn();
 }
