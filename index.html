@@ -57,7 +57,10 @@
       document.getElementById("p_x").innerHTML = "";
       document.getElementById("p_o").innerHTML = "Player X turn";
     }
-    document.getElementById(element.id).innerHTML = CURRENT_PLAYER;
+    document.getElementById(element.id).innerHTML = "<p style='padding-top: 0px;'>" + CURRENT_PLAYER + "</p>";
+    // document.getElementById(element.id).style.color = "blue";
+    // document.getElementById(element.id).style.fontFamily = "Arial";
+    // document.getElementById(element.id).style.fontSize = "larger";
 
     update_status(element.id[3]-1);
   }
