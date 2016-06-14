@@ -69,6 +69,10 @@ function win_game() {
 	SCORES[CURRENT_PLAYER] += 1;
 }
 
+function draw_game(argument) {
+	alert("It's a draw!")
+}
+
 /**************************** Main function for game ****************/
 function update_status(box) {
 	// Array of blocks (string) in which
@@ -85,6 +89,10 @@ function update_status(box) {
 		}
 		if (game_status[block].length == 3) {
 			win_game();
+			reset_game();
+		}
+		else if(NO_OF_TURNS == 9) {
+			draw_game();
 			reset_game();
 		}
 	}
