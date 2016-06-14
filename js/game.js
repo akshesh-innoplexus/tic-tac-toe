@@ -12,6 +12,7 @@ var map_box_block = {
 	7: ['row2', 'col1'],
 	8: ['row2', 'col2', 'diag1']
 }
+var BLANK = '';
 
 /************************ Scores of players *************************/
 var SCORES = {
@@ -32,6 +33,7 @@ var game_status = {
 	diag1: [],
 	diag2: []
 };
+var BOARD = [BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK];
 
 /********************** Utility functions for game ******************/
 function reset_game() {
@@ -52,6 +54,7 @@ function reset_game() {
 		// console.log(id);
 		document.getElementById(id).innerHTML = "";
 	}
+	BOARD = [BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK, BLANK];
 }
 
 function next_turn() {
@@ -77,6 +80,14 @@ function draw_game(argument) {
 function update_status(box) {
 	// Array of blocks (string) in which
 	// a particular box is present
+	if(BOARD[box] != BLANK) {
+		alert("This box is already filled");
+		return;
+	}
+	// console.log('lkjlkj');
+	BOARD[box] = CURRENT_PLAYER;
+	element_id = "div" + (box+1);
+	document.getElementById(element_id).innerHTML = "<p style='padding-top: 0px; font-size:32px'>" + CURRENT_PLAYER + "</p>";
 	var blocks = map_box_block[box];
 	var blocks_length = blocks.length;
 	for(var i=0; i < blocks_length; i++) {
@@ -87,11 +98,12 @@ function update_status(box) {
 		else if(game_status[block].indexOf(CURRENT_PLAYER) != -1) {
 			game_status[block].push(CURRENT_PLAYER);
 		}
+		console.log(NO_OF_TURNS);
 		if (game_status[block].length == 3) {
 			win_game();
 			reset_game();
 		}
-		else if(NO_OF_TURNS == 9) {
+		else if(NO_OF_TURNS == 8) {
 			draw_game();
 			reset_game();
 		}
