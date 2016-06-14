@@ -47,6 +47,11 @@ function reset_game() {
 	};
 	NO_OF_TURNS = 0;
 	CURRENT_PLAYER = 'X';
+	for(var i=1; i<10; i++){
+		var id="div"+i;
+		// console.log(id);
+		document.getElementById(id).innerHTML = "";
+	}
 }
 
 function next_turn() {

@@ -2,47 +2,79 @@
 <html lang="en">
 <head>
   <link href="css/style.css" type="text/css" rel="stylesheet"/>
-  <script src="js/game.js">
-  $('div.div1').click(function(){
-    GetContent("xxx");
-  });
-  </script>
+  <script src="js/game.js"></script>
 </head>
 
 <body>
 
 <div class="main_div">
-  <div class="div1" id="div1">
-    <h5>1</h5>
+  <div class="box" id="div1" onclick="make_move(this);">
+    <h5></h5>
   </div>
-  <div class="div2" id="div2">
-    <h5>1</h5>
+  <div class="box" id="div2" onclick="make_move(this);">
+    <h5></h5>
   </div>
-  <div class="div3" id="div3">
-    <h5>1</h5>
+  <div class="box" id="div3" onclick="make_move(this);">
+    <h5></h5>
   </div>
-  <div class="div4" id="div4">
-    <h5>1</h5>
+  <div class="box" id="div4" onclick="make_move(this);">
+    <h5></h5>
   </div>
-  <div class="div5" id="div5">
-    <h5>1</h5>
+  <div class="box" id="div5" onclick="make_move(this);">
+    <h5></h5>
   </div>
-  <div class="div6" id="div6">
-    <h5>1</h5>
+  <div class="box" id="div6" onclick="make_move(this);">
+    <h5></h5>
   </div>
-  <div class="div7" id="div7">
-    <h5>1</h5>
+  <div class="box" id="div7" onclick="make_move(this);">
+    <h5></h5>
   </div>
-  <div class="div8" id="div8">
-    <h5>1</h5>
+  <div class="box" id="div8" onclick="make_move(this);">
+    <h5></h5>
   </div>
-  <div class="div9" id="div9">
-    <h5>1</h5>
+  <div class="box" id="div9" onclick="make_move(this);">
+    <h5></h5>
   </div>
 </div>
 <br>
 <div>
-  <button>New Game</button>
+<div style="float: left;" id="p_x"></div><br>
+<div style="float: left;" id="p_o"></div>
 </div>
+<br>
+<div>
+  <button onclick="reset_game();">New Game</button>
+</div>
+
+<script>
+  function make_move(element){
+    // console.log(element.id[3]-1);
+    console.log(CURRENT_PLAYER);
+    if(CURRENT_PLAYER=="X"){
+      document.getElementById("p_o").innerHTML = "";
+      document.getElementById("p_x").innerHTML = "Player O turn";
+    } else {
+      document.getElementById("p_x").innerHTML = "";
+      document.getElementById("p_o").innerHTML = "Player X turn";
+    }
+    document.getElementById(element.id).innerHTML = CURRENT_PLAYER;
+
+    update_status(element.id[3]-1);
+  }
+
+
+  // var div1 = document.getElementById('div1');
+  // var div2 = document.getElementById('div2');
+  // var div3 = document.getElementById('div3');
+  // var div4 = document.getElementById('div4');
+  //
+  // box.onclick = function() {
+  //   // alert("x clicked first time..");
+  //   document.getElementById("div1").innerHTML = "X";
+  //   // update_status(0);
+  //
+  // };
+
+</script>
 </body>
 </html>
